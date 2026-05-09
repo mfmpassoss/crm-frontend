@@ -1,0 +1,138 @@
+.clientes-container {
+  min-height: 100vh;
+  padding: 30px;
+  background: #0f172a;
+}
+
+.clientes-container h1 {
+  color: white;
+  margin-bottom: 25px;
+}
+
+.clientes-form {
+  background: #f8fafc;
+  padding: 25px;
+  border-radius: 18px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 15px;
+
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.clientes-form input {
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+}
+
+.clientes-form input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.clientes-form button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clientes-lista {
+  margin-top: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cliente-card {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.cliente-card h3 {
+  margin: 0;
+  color: #0f172a;
+}
+
+.cliente-acoes {
+  display: flex;
+  gap: 10px;
+}
+
+.whatsapp-btn {
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.financeiro-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cliente-card{
+  position: relative;
+}
+
+.excluir-btn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  width: 25px;
+  height: 25px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: red;
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+
+  .cliente-card {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+
+  .cliente-acoes {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .cliente-acoes button {
+    width: 100%;
+  }
+}
+.clientes-form input {
+  background: white !important;
+  color: black !important;
+}
