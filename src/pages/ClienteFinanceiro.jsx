@@ -17,18 +17,25 @@ export default function ClienteFinanceiro() {
     vencimento: "",
   });
 
-  useEffect(() => {
-    buscarFinanceiro();
-  }, []);
+ useEffect(() => {
+  buscarFinanceiro();
+}, []);
 
-  const buscarFinanceiro = async () => {
+const buscarFinanceiro = async () => {
+  try {
+    const response = await api.get(`/financeiro/${id}`);
 
-    const response = await api.get(
-      `/financeiro/${id}`
+    setRegistros(
+      Array.isArray(response.data)
+        ? response.data
+        : []
     );
 
-    setRegistros(response.data);
-  };
+  } catch (error) {
+    console.log(error);
+    setRegistros([]);
+  }
+};
 
   const handleChange = (e) => {
 

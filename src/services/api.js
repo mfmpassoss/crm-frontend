@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-   baseURL:
-    "https://flowzap.api.br"
+   baseURL: "https://flowzap.api.br"
 });
 
 api.interceptors.request.use(

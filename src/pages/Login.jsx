@@ -19,38 +19,31 @@ export default function Login() {
   const [senha, setSenha] =
     useState("");
 
-  const entrar =
-    async (e) => {
+  const entrar = async (e) => {
+  e.preventDefault();
 
-      e.preventDefault();
+  try {
+    const response = await api.post("/login", {
+      usuario,
+      senha
+    });
 
-      try {
+    const token = response.data?.token;
 
-        const response =
-          await api.post(
-            "/login",
-            {
-              usuario,
-              senha
-            }
-          );
+    if (!token) {
+      alert("Erro ao fazer login");
+      return;
+    }
 
-        localStorage.setItem(
-          "token",
-          response.data.token
-        );
+    localStorage.setItem("token", token);
 
-        navigate("/dashboard");
+    navigate("/dashboard");
 
-      } catch (error) {
-
-        console.log(error);
-
-        alert(
-          "Usuário ou senha inválidos"
-        );
-      }
-    };
+  } catch (error) {
+    console.log(error);
+    alert("Usuário ou senha inválidos");
+  }
+};
 
   return (
 

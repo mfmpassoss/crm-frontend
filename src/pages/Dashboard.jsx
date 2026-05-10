@@ -86,7 +86,7 @@ const buscarQr = async () => {
           "/dashboard"
         );
 
-      setDados(response.data);
+     setDados(response.data || {});
 
     } catch (error) {
 
@@ -102,34 +102,28 @@ const buscarQr = async () => {
 
   navigate("/");
 };
-
 const cobrarAtrasados = async () => {
-
   try {
-
     setEnviando(true);
-
     setFilaModal(true);
 
     setFilaEnvio([]);
 
-    const response =
-      await api.post(
-        "/cobrar-atrasados"
-      );
+    const response = await api.post(
+      "/cobrar-atrasados"
+    );
 
     setFilaEnvio(
-      response.data.resultados
+      Array.isArray(response.data.resultados)
+        ? response.data.resultados
+        : []
     );
 
   } catch (error) {
-
     console.log(error);
-
     alert("Erro ao cobrar");
 
   } finally {
-
     setEnviando(false);
   }
 };
@@ -184,7 +178,7 @@ const desconectarWhats =
           `/dashboard/${tipo}`
         );
 
-      setLista(response.data);
+      setLista(Array.isArray(response.data) ? response.data : []);
 
       setTipoModal(tipo);
 

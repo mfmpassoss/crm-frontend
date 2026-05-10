@@ -34,7 +34,11 @@ export default function Clientes() {
         "/clientes"
       );
 
-      setClientes(response.data);
+      setClientes(
+  Array.isArray(response.data)
+    ? response.data
+    : []
+);
 
     } catch (error) {
 
